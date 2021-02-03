@@ -18,7 +18,7 @@ public interface JasonPlaceHolder {
 
 
    @GET("api/BusTerminal/getShipmentInfo?p_string_DatabaseName=OWDATABASE_BUSTERMINAL_1G&p_string_TrackingNumber=4026844342")
-    Call <List<Shipment>> getShipmentInfo();
+    Call <Shipment> getShipmentInfo();
     // http://api.busterminal.octword.net/api/BusTerminal/getShipmentInfo?p_string_DatabaseName=OWDATABASE_BUSTERMINAL_1G&p_string_TrackingNumber=4026844342
 
 }

@@ -68,54 +68,58 @@ public class MainActivity extends AppCompatActivity {
         //Call<List<Shipment>>  call = jsonPlaceHolder.getInfoShipment("OWDATABASE_BUSTERMINAL_1G","0124577778");// path
 
         //Call<List<Shipment>>  call = jsonPlaceHolder.getInfoShipment(dataBaseName,trackingNumber);
-        Call<List<Shipment>>  call = jsonPlaceHolder.getShipmentInfo();
-        call.enqueue(new Callback<List<Shipment>>() {
-        @Override
-            public void onResponse(Call<List<Shipment>> call, Response<List<Shipment>> response) {
+        Call <Shipment>  call = jsonPlaceHolder.getShipmentInfo();
+        call.enqueue(new Callback<Shipment>() {
+            @Override
+            public void onResponse(Call<Shipment> call, Response<Shipment> response) {
                 if (!response.isSuccessful()){
                     mJsoTxtView.setText("Codigo:   "+response.code());
                     return;
                 }
-                List<Shipment>  infoTrack = response.body8  (); // respuesta del servidor
+                // <Shipment>  infoTrack = response.body(); // respuesta del servidor
 
-                 for ( Shipment  trackInfo : infoTrack){
-                 String content = "";
-                     
-                 content+= "XKey:" + trackInfo.getXKey()+"\n";
-                 content+="SenderCustomerXKey:" + trackInfo.getSenderCustomerXKey()+"\n";
-                 content+="ReceiverFullName:" +trackInfo.getReceiverFullName()+"\n";
-                 content+="ReceiverMobilPhone:"+trackInfo.getReceiverMobilPhone()+"\n";
-                 content+="ReceiverEmail:"+trackInfo.getReceiverEmail()+"\n";
-                 content+="XPassword:"+trackInfo.getXPassword()+"\n";
-                 content+="TrackingNumber:" + trackInfo.getTrackingNumber()+"\n";
-                 content+="XDate:"+trackInfo.getXDate()+"\n";
-                     content+="XFrom:"+trackInfo.getXFrom()+"\n";
-                     content+="XTo:"+trackInfo.getXTo()+"\n";
-                     content+="XContent:"+trackInfo.getXContent()+"\n";
-                     content+="DeclaredAmount:"+trackInfo.getDeclaredAmount()+"\n";
-                     content+="Fee:"+trackInfo.getFee()+"\n";
-                     content+="PayWhenReceived:"+trackInfo.getPayWhenReceived()+"\n";
-                     content+="PaymentStatus:"+trackInfo.getPaymentStatus()+"\n";
-                     content+="InvoiceXValue:"+trackInfo.getInvoiceXValue()+"\n";
-                     content+="ShipmentStatus:"+trackInfo.getShipmentStatus()+"\n";
-                     content+="BusXKey:"+trackInfo.getBusXKey()+"\n";
-                     content+="BusDriverXKey:"+trackInfo.getBusDriverXKey()+"\n";
+                String content = "";
 
+                content = "XKey:" + response.body().getXKey()+
+                "\n SenderCustomerXKey:" + response.body().getSenderCustomerXKey()+
+                "\n ReceiverFullName:" +response.body().getReceiverFullName()+
+                "\n ReceiverMobilPhone:"+response.body().getReceiverMobilPhone()+
+                "\n ReceiverEmail:"+response.body().getReceiverEmail()+
+                "\n XPassword:"+response.body().getXPassword()+
+                "\n TrackingNumber:" + response.body().getTrackingNumber()+
+                "\n XDate:"+response.body().getXDate()+
+                "\n XFrom:"+response.body().getXFrom()+
+                "\n XTo:"+response.body().getXTo()+
+                "\n XContent:"+response.body().getXContent()+
+                "\n DeclaredAmount:"+response.body().getDeclaredAmount()+
+                "\n Fee:"+response.body().getFee()+
+                "\n PayWhenReceived:"+response.body().getPayWhenReceived()+
+                "\n PaymentStatus:"+response.body().getPaymentStatus()+
+                "\n InvoiceXValue:"+response.body().getInvoiceXValue()+
+                "\n ShipmentStatus:"+response.body().getShipmentStatus()+
+                "\n BusXKey:"+response.body().getBusXKey()+
+                "\n BusDriverXKey:"+response.body().getBusDriverXKey();
 
 
-                 mJsoTxtView.append(content);
+                mJsoTxtView.append(content);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Shipment> call, Throwable t) {
+                mJsoTxtView.setText(t.getMessage());
+            }
+        });  {
 
                  }
 
             }
 
-            @Override
-            public void onFailure(Call<List<Shipment>> call, Throwable t) {
-                mJsoTxtView.setText(t.getMessage());
-            }
-        });
 
-    }
+
+
+
 }
 
 
