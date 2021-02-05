@@ -34,8 +34,8 @@ public class Shipment {
     @SerializedName("TrackingNumber")
     public String TrackingNumber;
 
-    @SerializedName("XDate")
-    public LocalDateTime XDate;
+    //@SerializedName("XDate")
+   // public LocalDateTime XDate;
 
     @SerializedName("XFrom")
     public String XFrom;
@@ -74,14 +74,14 @@ public class Shipment {
     public int TurnXKey;
 
     //------------------------------------------------------------------------------------
-    @SerializedName("CreationDateTime")
-    public LocalDateTime CreationDateTime;
+   // @SerializedName("CreationDateTime")
+    //public LocalDateTime CreationDateTime;
 
     @SerializedName("CreationAuthor")
     public String CreationAuthor;
 
-    @SerializedName("LastModificationDateTime")
-    public LocalDateTime LastModificationDateTime;
+    //@SerializedName("LastModificationDateTime")
+    //public LocalDateTime LastModificationDateTime;
 
     @SerializedName("LastModificationAuthor")
     public String LastModificationAuthor;
@@ -155,17 +155,11 @@ public class Shipment {
         TrackingNumber = trackingNumber;
     }
 
-    public LocalDateTime getXDate() {
-        return XDate;
-    }
+  // public LocalDateTime getXDate() {        return XDate;    }
 
-    public void setXDate(LocalDateTime XDate) {
-        this.XDate = XDate;
-    }
+   // public void setXDate(LocalDateTime XDate) { this.XDate = XDate; }
 
-    public String getXFrom() {
-        return XFrom;
-    }
+    public String getXFrom() {return XFrom;}
 
     public void setXFrom(String XFrom) {
         this.XFrom = XFrom;
@@ -259,13 +253,13 @@ public class Shipment {
         TurnXKey = turnXKey;
     }
 
-    public LocalDateTime getCreationDateTime() {
-        return CreationDateTime;
-    }
+    //public LocalDateTime getCreationDateTime() {
+      //  return CreationDateTime;
+    //}
 
-    public void setCreationDateTime(LocalDateTime creationDateTime) {
-        CreationDateTime = creationDateTime;
-    }
+   // public void setCreationDateTime(LocalDateTime creationDateTime) {
+     //   CreationDateTime = creationDateTime;
+    //}
 
     public String getCreationAuthor() {
         return CreationAuthor;
@@ -275,13 +269,11 @@ public class Shipment {
         CreationAuthor = creationAuthor;
     }
 
-    public LocalDateTime getLastModificationDateTime() {
-        return LastModificationDateTime;
-    }
+    //public LocalDateTime getLastModificationDateTime() {        return LastModificationDateTime;    }
 
-    public void setLastModificationDateTime(LocalDateTime lastModificationDateTime) {
-        LastModificationDateTime = lastModificationDateTime;
-    }
+    //public void setLastModificationDateTime(LocalDateTime lastModificationDateTime) {
+      //  LastModificationDateTime = lastModificationDateTime;
+    //}
 
     public String getLastModificationAuthor() {
         return LastModificationAuthor;
