@@ -11,7 +11,11 @@ import android.widget.TextView;
 import com.example.retroapilusgson.Interface.JasonPlaceHolder;
 import com.example.retroapilusgson.Model.Post;
 import com.example.retroapilusgson.Model.Shipment;
+import com.example.retroapilusgson.Model.UTCDateTypeAdapter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -49,20 +53,23 @@ public class MainActivity extends AppCompatActivity {
         //getPosts();
         //getShipment();
         getInfoShipment();
+
         //ShipmentInfoGet();
     }
 
 
     private void  getInfoShipment() {
 
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Date.class, new UTCDateTypeAdapter())
+                .create();
         // creacion de Instacia RETROFIT
                  Retrofit retrofit = new Retrofit.Builder()
 
 
                          .baseUrl("https://api.busterminal.octword.net")  // OCTWORD AP
                          .addConverterFactory(GsonConverterFactory.create())         //    GSON CONVERRTER
-                         .build();
-        // Llama a la  clase INTERFAZ
+                         .build();        // Llama a la  clase INTERFAZ
         JasonPlaceHolder jsonPlaceHolder = retrofit.create(JasonPlaceHolder.class);
         //Call<List<Shipment>>  call = jsonPlaceHolder.ShipmentInfoGet("OWDATABASE_BUSTERMINAL_1G","0124577778"); // query
         //Call<List<Shipment>>  call = jsonPlaceHolder.getInfoShipment("OWDATABASE_BUSTERMINAL_1G","0124577778");// path

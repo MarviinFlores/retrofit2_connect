@@ -34,8 +34,8 @@ public class Shipment {
     @SerializedName("TrackingNumber")
     public String TrackingNumber;
 
-    //@SerializedName("XDate")
-   // public LocalDateTime XDate;
+    @SerializedName("XDate")
+    public LocalDateTime XDate;
 
     @SerializedName("XFrom")
     public String XFrom;
