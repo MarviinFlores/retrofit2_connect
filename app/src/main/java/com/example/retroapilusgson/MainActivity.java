@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void  getInfoShipment() {
-
+        // Registro del Date Converter
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Date.class, new UTCDateTypeAdapter())
                 .create();
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 "\n ReceiverEmail:"+response.body().getReceiverEmail()+
                 "\n XPassword:"+response.body().getXPassword()+
                 "\n TrackingNumber:" + response.body().getTrackingNumber()+
-               // "\n XDate:"+response.body().getXDate()+
+                "\n XDate:"+response.body().getXDate()+
                 "\n XFrom:"+response.body().getXFrom()+
                 "\n XTo:"+response.body().getXTo()+
                 "\n XContent:"+response.body().getXContent()+

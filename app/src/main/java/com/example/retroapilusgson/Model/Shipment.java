@@ -155,9 +155,9 @@ public class Shipment {
         TrackingNumber = trackingNumber;
     }
 
-  // public LocalDateTime getXDate() {        return XDate;    }
+   public LocalDateTime getXDate() {        return XDate;    }
 
-   // public void setXDate(LocalDateTime XDate) { this.XDate = XDate; }
+   public void setXDate(LocalDateTime XDate) { this.XDate = XDate; }
 
     public String getXFrom() {return XFrom;}
 
