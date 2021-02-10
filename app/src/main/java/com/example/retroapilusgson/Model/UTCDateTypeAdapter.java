@@ -21,36 +21,19 @@ import java.util.Formatter;
 import java.util.Locale;
 import java.util.TimeZone;
 
- class LocalDateSerializer  implements JsonSerializer<LocalDate> {
-    private  final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-yyyy");
+ public class UTCDateTypeAdapter implements JsonSerializer<LocalDateTime>,JsonDeserializer<LocalDateTime>{
+     private  final  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.US);
 
      @Override
-     public JsonElement serialize(LocalDate localDate, Type srcType, JsonSerializationContext context) {
-         return new JsonPrimitive(formatter.format(localDate));
-     }
-     class LocalDateTimeSerializer  implements  JsonSerializer <LocalDateTime>{
-         private final  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d::MMM::uuuu  HH::mm::ss");
+     public  JsonElement serialize(LocalDateTime localDateTime , Type type, JsonSerializationContext jsonSerializationContext) {
 
-         @Override
-         public JsonElement serialize(LocalDateTime localDateTime, Type srcType, JsonSerializationContext context) {
-             return  new JsonPrimitive(formatter.format(localDateTime));
-         }
+         return new JsonPrimitive(formatter.format(localDateTime));
      }
 
-     class LocalDateDeserializer implements  JsonDeserializer <LocalDate> {
-         @Override
-         public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-                 throws JsonParseException {
-                 return LocalDate.parse(json.getAsString(), DateTimeFormatter.ofPattern("d-MM-yyyy").withLocale(Locale.ENGLISH));
-             }
+     @Override
+     public synchronized  LocalDateTime deserialize(JsonElement jsonElement, Type typeOfT, JsonDeserializationContext jsonDeserializationContext)
+             throws JsonParseException {
+         return LocalDateTime.parse(jsonElement.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.US));
 
-         }
      }
-    class LocalDateTimeDeserializer implements JsonDeserializer <LocalDateTime> {
-        @Override
-        public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-                throws JsonParseException {
-            return LocalDateTime.parse(json.getAsString(),DateTimeFormatter.ofPattern("d::MMMM::uuuu HH::mm:ss").withLocale(Locale.ENGLISH));
-        }
-    }
  }

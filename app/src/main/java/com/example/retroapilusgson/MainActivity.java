@@ -14,6 +14,7 @@ import com.example.retroapilusgson.Model.Shipment;
 import com.example.retroapilusgson.Model.UTCDateTypeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 
 import java.util.Date;
 import java.util.List;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private void  getInfoShipment() {
         // Registro del Date Converter
         Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Date.class, new UTCDateTypeAdapter())
+                .registerTypeAdapter(JsonElement.class, new UTCDateTypeAdapter())
                 .create();
         // creacion de Instacia RETROFIT
                  Retrofit retrofit = new Retrofit.Builder()
