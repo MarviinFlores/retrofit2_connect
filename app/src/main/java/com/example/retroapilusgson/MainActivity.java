@@ -61,21 +61,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void  getInfoShipment() {
         // Registro del Date Converter
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(JsonElement.class, new UTCDateTypeAdapter())
+                Gson  gson = new GsonBuilder()
+                .registerTypeAdapter(Date.class, new UTCDateTypeAdapter())
                 .create();
-        // creacion de Instacia RETROFIT
-                 Retrofit retrofit = new Retrofit.Builder()
-
-
+                         // creacion de Instacia RETROFIT
+                         Retrofit retrofit = new Retrofit.Builder()
                          .baseUrl("https://api.busterminal.octword.net")  // OCTWORD AP
-                         .addConverterFactory(GsonConverterFactory.create())         //    GSON CONVERRTER
+                         .addConverterFactory(GsonConverterFactory.create(gson))         //    GSON CONVERRTER
                          .build();        // Llama a la  clase INTERFAZ
-        JasonPlaceHolder jsonPlaceHolder = retrofit.create(JasonPlaceHolder.class);
-        //Call<List<Shipment>>  call = jsonPlaceHolder.ShipmentInfoGet("OWDATABASE_BUSTERMINAL_1G","0124577778"); // query
-        //Call<List<Shipment>>  call = jsonPlaceHolder.getInfoShipment("OWDATABASE_BUSTERMINAL_1G","0124577778");// path
+                         JasonPlaceHolder jsonPlaceHolder = retrofit.create(JasonPlaceHolder.class);
 
-        //Call<List<Shipment>>  call = jsonPlaceHolder.getInfoShipment(dataBaseName,trackingNumber);
+
         Call <Shipment>  call = jsonPlaceHolder.getShipmentInfo();
         call.enqueue(new Callback<Shipment>() {
             @Override

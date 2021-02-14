@@ -3,6 +3,7 @@ package com.example.retroapilusgson.Model;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
@@ -21,19 +22,34 @@ import java.util.Formatter;
 import java.util.Locale;
 import java.util.TimeZone;
 
- public class UTCDateTypeAdapter implements JsonSerializer<LocalDateTime>,JsonDeserializer<LocalDateTime>{
-     private  final  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.US);
+import static java.time.format.DateTimeFormatter.ofPattern;
+
+public class UTCDateTypeAdapter implements  JsonSerializer <Date>,JsonDeserializer<Date> {
+       private final DateFormat dateFormat;
+       public UTCDateTypeAdapter(){
+           dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.US);
+       }
+       //"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
      @Override
-     public  JsonElement serialize(LocalDateTime localDateTime , Type type, JsonSerializationContext jsonSerializationContext) {
-
-         return new JsonPrimitive(formatter.format(localDateTime));
+     public  synchronized  JsonElement serialize (Date date, Type type, JsonSerializationContext jsonSerializationContext){
+           synchronized  (dateFormat) {
+               String dateFormatAsString =  dateFormat.format(date);
+               return  new JsonPrimitive (dateFormatAsString);
+           }
      }
 
-     @Override
-     public synchronized  LocalDateTime deserialize(JsonElement jsonElement, Type typeOfT, JsonDeserializationContext jsonDeserializationContext)
-             throws JsonParseException {
-         return LocalDateTime.parse(jsonElement.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.US));
+    @Override
+    public  synchronized Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext ) throws JsonParseException {
 
-     }
- }
+        try {
+            synchronized (dateFormat){
+                return dateFormat.parse(jsonElement.getAsString());
+            }
+            } catch (ParseException e){
+            throw  new JsonParseException(jsonElement.getAsString(),e);
+        }
+    }
+}
+
+
