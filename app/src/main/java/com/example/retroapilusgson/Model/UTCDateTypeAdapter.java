@@ -24,32 +24,15 @@ import java.util.TimeZone;
 
 import static java.time.format.DateTimeFormatter.ofPattern;
 
-public class UTCDateTypeAdapter implements  JsonSerializer <Date>,JsonDeserializer<Date> {
-       private final DateFormat dateFormat;
-       public UTCDateTypeAdapter(){
-           dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.US);
-       }
-       //"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+public class UTCDateTypeAdapter implements  JsonSerializer <LocalDateTime> {
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d::MMM::uuuu HH::mm::ss");
 
-     @Override
-     public  synchronized  JsonElement serialize (Date date, Type type, JsonSerializationContext jsonSerializationContext){
-           synchronized  (dateFormat) {
-               String dateFormatAsString =  dateFormat.format(date);
-               return  new JsonPrimitive (dateFormatAsString);
-           }
-     }
+    //"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     @Override
-    public  synchronized Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext ) throws JsonParseException {
-
-        try {
-            synchronized (dateFormat){
-                return dateFormat.parse(jsonElement.getAsString());
-            }
-            } catch (ParseException e){
-            throw  new JsonParseException(jsonElement.getAsString(),e);
-        }
+    public JsonElement serialize(LocalDateTime localDateTime, Type scrType, JsonSerializationContext jsonSerializationContext) {
+        return new JsonPrimitive(formatter.format(localDateTime));
     }
-}
 
+}
 

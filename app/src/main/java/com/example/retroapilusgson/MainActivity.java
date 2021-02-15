@@ -71,12 +71,14 @@ public class MainActivity extends AppCompatActivity {
     private void  getInfoShipment() {
         // Registro del Date Converter
                 Gson  gson = new GsonBuilder()
-                .registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
-                    @Override
-                    public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-                        return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-                    }
-                }).create();
+                .registerTypeAdapter(LocalDateTime.class, new UTCDateTypeAdapter())
+                .create();
+                {
+                    //@Override
+                    //public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+                      //  return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
+                    //}
+                //}).create();
 
                          // creacion de Instacia RETROFIT
                          Retrofit retrofit = new Retrofit.Builder()
