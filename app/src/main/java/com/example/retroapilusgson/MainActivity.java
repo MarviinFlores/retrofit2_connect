@@ -14,8 +14,17 @@ import com.example.retroapilusgson.Model.Shipment;
 import com.example.retroapilusgson.Model.UTCDateTypeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 
+import java.lang.reflect.Type;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -62,8 +71,13 @@ public class MainActivity extends AppCompatActivity {
     private void  getInfoShipment() {
         // Registro del Date Converter
                 Gson  gson = new GsonBuilder()
-                .registerTypeAdapter(Date.class, new UTCDateTypeAdapter())
-                .create();
+                .registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
+                    @Override
+                    public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+                        return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    }
+                }).create();
+
                          // creacion de Instacia RETROFIT
                          Retrofit retrofit = new Retrofit.Builder()
                          .baseUrl("https://api.busterminal.octword.net")  // OCTWORD AP
