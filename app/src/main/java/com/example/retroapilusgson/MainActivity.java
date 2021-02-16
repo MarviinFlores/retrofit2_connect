@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtReceiverFullName;
     private TextView txtXContent;
 
-    String dataBaseName ;
+    String dataBaseName;
     String trackingNumber;
 
 
@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mJsoTxtView = findViewById(R.id.jsonText);
         /**txtCustomerXKey = findViewById(R.id.txtCustomerXKey);
-        txtReceiverFullName = findViewById(R.id.txtReceiverFullName);
-        txtTrackingNumber = findViewById(R.id.txtTrackingNumber);
-        txtXContent = findViewById(R.id.txtXcontent);*/
+         txtReceiverFullName = findViewById(R.id.txtReceiverFullName);
+         txtTrackingNumber = findViewById(R.id.txtTrackingNumber);
+         txtXContent = findViewById(R.id.txtXcontent);*/
 
         //getPosts();
         //getShipment();
@@ -68,79 +68,77 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void  getInfoShipment() {
-        // Registro del Date Converter
-                Gson  gson = new GsonBuilder()
-                .registerTypeAdapter(LocalDateTime.class, new UTCDateTypeAdapter())
-                .create();
-                {
-                    //@Override
-                    //public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-                      //  return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
-                    //}
-                //}).create();
-
-                         // creacion de Instacia RETROFIT
-                         Retrofit retrofit = new Retrofit.Builder()
-                         .baseUrl("https://api.busterminal.octword.net")  // OCTWORD AP
-                         .addConverterFactory(GsonConverterFactory.create(gson))         //    GSON CONVERRTER
-                         .build();        // Llama a la  clase INTERFAZ
-                         JasonPlaceHolder jsonPlaceHolder = retrofit.create(JasonPlaceHolder.class);
+    private void getInfoShipment() {
+                 // Registro del LocalDateTime Converter
+                 Gson gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
 
 
-        Call <Shipment>  call = jsonPlaceHolder.getShipmentInfo();
-        call.enqueue(new Callback<Shipment>() {
             @Override
-            public void onResponse(Call<Shipment> call, Response<Shipment> response) {
-                if (!response.isSuccessful()){
-                    mJsoTxtView.setText("Codigo:   "+response.code());
-                    return;
+            public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+             return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
+            }
+            }).create();
+
+            // creacion de Instacia RETROFIT
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://api.busterminal.octword.net")  // OCTWORD AP
+                    .addConverterFactory(GsonConverterFactory.create(gson))         //    GSON CONVERRTER
+                    .build();        // Llama a la  clase INTERFAZ
+            JasonPlaceHolder jsonPlaceHolder = retrofit.create(JasonPlaceHolder.class);
+
+
+            Call<Shipment> call = jsonPlaceHolder.getShipmentInfo();
+            call.enqueue(new Callback<Shipment>() {
+                @Override
+                public void onResponse(Call<Shipment> call, Response<Shipment> response) {
+                    if (!response.isSuccessful()) {
+                        mJsoTxtView.setText("Codigo:   " + response.code());
+                        return;
+                    }
+                    // <Shipment>  infoTrack = response.body(); // respuesta del servidor
+
+                    String content = "";
+
+                    content = "XKey:" + response.body().getXKey() +
+                            "\n SenderCustomerXKey:" + response.body().getSenderCustomerXKey() +
+                            "\n ReceiverFullName:" + response.body().getReceiverFullName() +
+                            "\n ReceiverMobilPhone:" + response.body().getReceiverMobilPhone() +
+                            "\n ReceiverEmail:" + response.body().getReceiverEmail() +
+                            "\n XPassword:" + response.body().getXPassword() +
+                            "\n TrackingNumber:" + response.body().getTrackingNumber() +
+                            "\n XDate:" + response.body().getXDate() +
+                            "\n XFrom:" + response.body().getXFrom() +
+                            "\n XTo:" + response.body().getXTo() +
+                            "\n XContent:" + response.body().getXContent() +
+                            "\n DeclaredAmount:" + response.body().getDeclaredAmount() +
+                            "\n Fee:" + response.body().getFee() +
+                            "\n PayWhenReceived:" + response.body().getPayWhenReceived() +
+                            "\n PaymentStatus:" + response.body().getPaymentStatus() +
+                            "\n InvoiceXValue:" + response.body().getInvoiceXValue() +
+                            "\n ShipmentStatus:" + response.body().getShipmentStatus() +
+                            "\n BusXKey:" + response.body().getBusXKey() +
+                            "\n BusDriverXKey:" + response.body().getBusDriverXKey();
+
+
+                    mJsoTxtView.append(content);
+
+
                 }
-                // <Shipment>  infoTrack = response.body(); // respuesta del servidor
 
-                String content = "";
-
-                content = "XKey:" + response.body().getXKey()+
-                "\n SenderCustomerXKey:" + response.body().getSenderCustomerXKey()+
-                "\n ReceiverFullName:" +response.body().getReceiverFullName()+
-                "\n ReceiverMobilPhone:"+response.body().getReceiverMobilPhone()+
-                "\n ReceiverEmail:"+response.body().getReceiverEmail()+
-                "\n XPassword:"+response.body().getXPassword()+
-                "\n TrackingNumber:" + response.body().getTrackingNumber()+
-                "\n XDate:"+response.body().getXDate()+
-                "\n XFrom:"+response.body().getXFrom()+
-                "\n XTo:"+response.body().getXTo()+
-                "\n XContent:"+response.body().getXContent()+
-                "\n DeclaredAmount:"+response.body().getDeclaredAmount()+
-                "\n Fee:"+response.body().getFee()+
-                "\n PayWhenReceived:"+response.body().getPayWhenReceived()+
-                "\n PaymentStatus:"+response.body().getPaymentStatus()+
-                "\n InvoiceXValue:"+response.body().getInvoiceXValue()+
-                "\n ShipmentStatus:"+response.body().getShipmentStatus()+
-                "\n BusXKey:"+response.body().getBusXKey()+
-                "\n BusDriverXKey:"+response.body().getBusDriverXKey();
-
-
-                mJsoTxtView.append(content);
-
+                @Override
+                public void onFailure(Call<Shipment> call, Throwable t) {
+                    mJsoTxtView.setText(t.getMessage());
+                }
+            });
+            {
 
             }
 
-            @Override
-            public void onFailure(Call<Shipment> call, Throwable t) {
-                mJsoTxtView.setText(t.getMessage());
-            }
-        });  {
-
-                 }
-
-            }
+        }
 
 
-
-
-
-}
+    }
 
 
 
