@@ -18,6 +18,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
     <!--Campos del Shipment -->
     <TableLayout
         android:id="@+id/tableLayout2"
@@ -35,9 +36,9 @@
         android:stretchColumns="*">
 
         <EditText
-            android:id="@+id/etxtNummber"
+            android:id="@+id/etxtSender"
             android:layout_width="282dp"
-            android:hint="Numero"
+            android:hint="Sender Customer ID"
             android:drawablePadding="10dp"
             android:ems="10"
             android:inputType="text"
@@ -51,9 +52,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtReciverName"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="Reciver"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -67,9 +68,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtReciverPhone"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="Reciver Phone"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -83,9 +84,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtReciverEmail"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="Reciver Mail"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -99,9 +100,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtTrackingNumber"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="Tracking"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -115,9 +116,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtDate"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="Date"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -131,9 +132,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtFrom"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="From"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -147,9 +148,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtTo"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="To"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -163,9 +164,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtContent"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="Content"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -179,9 +180,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtDeclaredAmount"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="DeclaredAmount"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -195,9 +196,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtFee"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="Fee"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -211,9 +212,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtPayWhenRecived"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="PayWhenRecived"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -227,9 +228,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtPaymentStatus"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="PaymentStatus"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -243,9 +244,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtInvoiceValue"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="InvoiceValue"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -259,9 +260,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtShipmentStatus"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="ShipmentStatus"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -275,9 +276,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtBusXKey"
                 android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="BusKey"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -291,41 +292,9 @@
             android:stretchColumns="*">
 
             <EditText
-                android:id="@+id/etxtNummber"
+                android:id="@+id/etxtDriverXKey"
                 android:layout_width="282dp"
-                android:hint="Numero"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:inputType="text"
-                android:paddingStart="10dp"
-                android:textSize="14sp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="293dp"
-            android:padding="5dp"
-            android:shrinkColumns="*"
-            android:stretchColumns="*">
-
-            <EditText
-                android:id="@+id/etxtNummber"
-                android:layout_width="282dp"
-                android:hint="Numero"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:inputType="text"
-                android:paddingStart="10dp"
-                android:textSize="14sp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="293dp"
-            android:padding="5dp"
-            android:shrinkColumns="*"
-            android:stretchColumns="*">
-
-            <EditText
-                android:id="@+id/etxtNummber"
-                android:layout_width="282dp"
-                android:hint="Numero"
+                android:hint="DriverXKey"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"

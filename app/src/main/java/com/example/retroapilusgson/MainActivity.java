@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.health.ServiceHealthStats;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.retroapilusgson.Interface.JasonPlaceHolder;
@@ -38,10 +39,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     private TextView mJsoTxtView;
-    private TextView txtTrackingNumber;
-    private TextView txtCustomerXKey;
-    private TextView txtReceiverFullName;
-    private TextView txtXContent;
+    private EditText etxtSender;
+    private EditText etxtReciverName;
+    private EditText etxtReciverPhone;
+    private EditText etxtReciverEmail;
+    private EditText etxtTrackingNumber;
+    private EditText etxtDate;
+    private EditText etxtFrom;
+    private EditText etxtTo;
+    private EditText etxtContent;
+    private EditText etxtDeclaredAmount;
+    private EditText etxtFee;
+    private EditText etxtPayWhenRecived;
+    private EditText etxtPaymentStatus;
+    private EditText etxtInvoiceValue;
+    private EditText etxtShipmentStatus;
+    private EditText etxtBusXKey;
+    private EditText etxtBusXDriver;
 
     String dataBaseName;
     String trackingNumber;
