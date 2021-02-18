@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private TextView mJsoTxtView;
+
+
+    private  TextView etxtXKey;
     private EditText etxtSender;
     private EditText etxtReciverName;
     private EditText etxtReciverPhone;
@@ -68,11 +71,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mJsoTxtView = findViewById(R.id.jsonText);
-        /**txtCustomerXKey = findViewById(R.id.txtCustomerXKey);
-         txtReceiverFullName = findViewById(R.id.txtReceiverFullName);
-         txtTrackingNumber = findViewById(R.id.txtTrackingNumber);
-         txtXContent = findViewById(R.id.txtXcontent);*/
+
+       // mJsoTxtView = findViewById(R.id.jsonText);
+
+         etxtXKey = findViewById(R.id.etxtXKey);
+         etxtSender = findViewById(R.id.etxtSender);
+         etxtReciverName = findViewById(R.id.etxtReciverName);
+         etxtReciverPhone = findViewById(R.id.etxtReciverEmail);
+         etxtTrackingNumber = findViewById(R.id.etxtTrackingNumber);
+         etxtDate = findViewById(R.id.etxtDate);
+         etxtFrom = findViewById(R.id.etxtFrom);
+         etxtTo = findViewById(R.id.etxtTo);
+         etxtContent = findViewById(R.id.etxtContent);
+         etxtDeclaredAmount = findViewById(R.id.etxtDeclaredAmount);
+         etxtFee = findViewById(R.id.etxtFee);
+         etxtPayWhenRecived = findViewById(R.id.etxtPayWhenRecived);
+         etxtPaymentStatus = findViewById(R.id.etxtPaymentStatus);
+         etxtInvoiceValue = findViewById(R.id.etxtInvoiceValue);
+         etxtShipmentStatus = findViewById(R.id.etxtShipmentStatus);
+         etxtBusXKey = findViewById(R.id.etxtBusXKey);
+         etxtBusXDriver = findViewById(R.id.etxtBusXKey);
+
+
+
+
 
         //getPosts();
         //getShipment();
@@ -112,8 +134,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                     // <Shipment>  infoTrack = response.body(); // respuesta del servidor
 
-                    String content = "";
+                    //<!-- Renderizer shipment Info-->
 
+
+
+                    String content = "";
+                    content = "SenderCustomerXKey:"+response.body().getSenderCustomerXKey();
+                    etxtSender.setText(content);
+/**
                     content = "XKey:" + response.body().getXKey() +
                             "\n SenderCustomerXKey:" + response.body().getSenderCustomerXKey() +
                             "\n ReceiverFullName:" + response.body().getReceiverFullName() +
@@ -135,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                             "\n BusDriverXKey:" + response.body().getBusDriverXKey();
 
 
-                    mJsoTxtView.append(content);
+                    mJsoTxtView.append(content);*/
 
 
                 }

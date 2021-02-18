@@ -28,7 +28,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <TableRow
+            android:layout_width="293dp"
+            android:padding="5dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
 
+            <Textview
+                android:id="@+id/etxtXKey"
+                android:layout_width="282dp"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:inputType="text"
+                android:paddingStart="10dp"
+                android:textSize="14sp" />
+        </TableRow>
     <TableRow
         android:layout_width="293dp"
         android:padding="5dp"
