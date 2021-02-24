@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.health.ServiceHealthStats;
 import android.util.Log;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TextView;
 
 import com.example.retroapilusgson.Interface.JasonPlaceHolder;
@@ -41,24 +41,24 @@ public class MainActivity extends AppCompatActivity {
     private TextView mJsoTxtView;
 
 
-    private  TextView etxtXKey;
-    private EditText etxtSender;
-    private EditText etxtReciverName;
-    private EditText etxtReciverPhone;
-    private EditText etxtReciverEmail;
-    private EditText etxtTrackingNumber;
-    private EditText etxtDate;
-    private EditText etxtFrom;
-    private EditText etxtTo;
-    private EditText etxtContent;
-    private EditText etxtDeclaredAmount;
-    private EditText etxtFee;
-    private EditText etxtPayWhenRecived;
-    private EditText etxtPaymentStatus;
-    private EditText etxtInvoiceValue;
-    private EditText etxtShipmentStatus;
-    private EditText etxtBusXKey;
-    private EditText etxtBusXDriver;
+    private TextView txtvXKey;
+    private TextView txtvSender;
+    private TextView txtvReciverName;
+    private TextView txtvReciverPhone;
+    private TextView txtvReciverEmail;
+    private TextView txtvTrackingNumber;
+    private TextView txtvDate;
+    private TextView txtvFrom;
+    private TextView txtvTo;
+    private TextView txtvContent;
+    private TextView txtvDeclaredAmount;
+    private TextView txtvFee;
+    private TextView txtvPayWhenRecived;
+    private TextView txtvPaymentStatus;
+    private TextView txtvInvoiceValue;
+    private TextView txtvShipmentStatus;
+    private TextView txtvBusXKey;
+    private TextView txtvBusXDriver;
 
     String dataBaseName;
     String trackingNumber;
@@ -74,23 +74,23 @@ public class MainActivity extends AppCompatActivity {
 
        // mJsoTxtView = findViewById(R.id.jsonText);
 
-         etxtXKey = findViewById(R.id.etxtXKey);
-         etxtSender = findViewById(R.id.etxtSender);
-         etxtReciverName = findViewById(R.id.etxtReciverName);
-         etxtReciverPhone = findViewById(R.id.etxtReciverEmail);
-         etxtTrackingNumber = findViewById(R.id.etxtTrackingNumber);
-         etxtDate = findViewById(R.id.etxtDate);
-         etxtFrom = findViewById(R.id.etxtFrom);
-         etxtTo = findViewById(R.id.etxtTo);
-         etxtContent = findViewById(R.id.etxtContent);
-         etxtDeclaredAmount = findViewById(R.id.etxtDeclaredAmount);
-         etxtFee = findViewById(R.id.etxtFee);
-         etxtPayWhenRecived = findViewById(R.id.etxtPayWhenRecived);
-         etxtPaymentStatus = findViewById(R.id.etxtPaymentStatus);
-         etxtInvoiceValue = findViewById(R.id.etxtInvoiceValue);
-         etxtShipmentStatus = findViewById(R.id.etxtShipmentStatus);
-         etxtBusXKey = findViewById(R.id.etxtBusXKey);
-         etxtBusXDriver = findViewById(R.id.etxtBusXKey);
+         txtvXKey = findViewById(R.id.txtvXKey);
+         txtvSender = findViewById(R.id.txtvSender);
+         txtvReciverName = findViewById(R.id.txtvReciverName);
+         txtvReciverPhone = findViewById(R.id.txtvReciverEmail);
+         txtvTrackingNumber = findViewById(R.id.txtvTrackingNumber);
+         txtvDate = findViewById(R.id.txtvDate);
+         txtvFrom = findViewById(R.id.txtvFrom);
+         txtvTo = findViewById(R.id.txtvTo);
+         txtvContent = findViewById(R.id.txtvContent);
+         txtvDeclaredAmount = findViewById(R.id.txtvDeclaredAmount);
+         txtvFee = findViewById(R.id.txtvFee);
+         txtvPayWhenRecived = findViewById(R.id.txtvPayWhenRecived);
+         txtvPaymentStatus = findViewById(R.id.txtvPaymentStatus);
+         txtvInvoiceValue = findViewById(R.id.txtvInvoiceValue);
+         txtvShipmentStatus = findViewById(R.id.txtvShipmentStatus);
+         txtvBusXKey = findViewById(R.id.txtvBusXKey);
+         txtvBusXDriver = findViewById(R.id.txtvBusXKey);
 
 
 
@@ -137,11 +137,40 @@ public class MainActivity extends AppCompatActivity {
                     //<!-- Renderizer shipment Info-->
 
 
+                    txtvXKey.setText(response.body().getXKey());
+                    txtvSender.setText(response.body().getSenderCustomerXKey());
+                    txtvReciverName.setText(response.body().getReceiverFullName());
+                    txtvReciverPhone.setText(response.body().getReceiverMobilPhone());
+                    txtvReciverEmail.setText(response.body().getReceiverEmail());
+                    txtvTrackingNumber.setText(response.body().getTrackingNumber());
+                   // txtvDate.setText(response.body().getXDate());
+                    txtvFrom.setText(response.body().getXFrom());
+                    txtvTo.setText(response.body().getXTo());
+                    txtvContent.setText(response.body().getXContent());
+                    txtvDeclaredAmount.setText((int)response.body().getDeclaredAmount());
+                    txtvFee.setText((int)response.body().getFee());
+                    txtvPayWhenRecived.setText(response.body().getPayWhenReceived());
+                    txtvPaymentStatus.setText(response.body().getPaymentStatus());
+                    txtvInvoiceValue.setText(response.body().getInvoiceXValue());
+                    txtvShipmentStatus.setText(response.body().getShipmentStatus());
+                    txtvBusXKey.setText(response.body().getBusXKey());
+                    txtvBusXDriver.setText(response.body().getBusDriverXKey());
 
+
+
+
+
+
+
+
+
+
+
+
+                    /**
                     String content = "";
                     content = "SenderCustomerXKey:"+response.body().getSenderCustomerXKey();
                     etxtSender.setText(content);
-/**
                     content = "XKey:" + response.body().getXKey() +
                             "\n SenderCustomerXKey:" + response.body().getSenderCustomerXKey() +
                             "\n ReceiverFullName:" + response.body().getReceiverFullName() +
@@ -160,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                             "\n InvoiceXValue:" + response.body().getInvoiceXValue() +
                             "\n ShipmentStatus:" + response.body().getShipmentStatus() +
                             "\n BusXKey:" + response.body().getBusXKey() +
-                            "\n BusDriverXKey:" + response.body().getBusDriverXKey();
+                            "\n BusDriverXKey:" + r;
 
 
                     mJsoTxtView.append(content);*/

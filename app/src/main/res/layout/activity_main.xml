@@ -34,9 +34,10 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <Textview
-                android:id="@+id/etxtXKey"
+            <TextView
+                android:id="@+id/txtvXKey"
                 android:layout_width="282dp"
+                android:hint="Key"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:inputType="text"
@@ -49,8 +50,8 @@
         android:shrinkColumns="*"
         android:stretchColumns="*">
 
-        <EditText
-            android:id="@+id/etxtSender"
+        <TextView
+            android:id="@+id/txtvSender"
             android:layout_width="282dp"
             android:hint="Sender Customer ID"
             android:drawablePadding="10dp"
@@ -65,8 +66,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtReciverName"
+            <TextView
+                android:id="@+id/txtvReciverName"
                 android:layout_width="282dp"
                 android:hint="Reciver"
                 android:drawablePadding="10dp"
@@ -81,8 +82,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtReciverPhone"
+            <TextView
+                android:id="@+id/txtvReciverPhone"
                 android:layout_width="282dp"
                 android:hint="Reciver Phone"
                 android:drawablePadding="10dp"
@@ -97,8 +98,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtReciverEmail"
+            <TextView
+                android:id="@+id/txtvReciverEmail"
                 android:layout_width="282dp"
                 android:hint="Reciver Mail"
                 android:drawablePadding="10dp"
@@ -113,8 +114,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtTrackingNumber"
+            <TextView
+                android:id="@+id/txtvTrackingNumber"
                 android:layout_width="282dp"
                 android:hint="Tracking"
                 android:drawablePadding="10dp"
@@ -129,24 +130,24 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtDate"
+            <TextView
+                android:id="@+id/txtvDate"
                 android:layout_width="282dp"
-                android:hint="Date"
                 android:drawablePadding="10dp"
                 android:ems="10"
-                android:inputType="text"
+                android:hint="Date"
+                android:inputType="datetime|text"
                 android:paddingStart="10dp"
                 android:textSize="14sp" />
-        </TableRow>
+        </TableRow>EditText
         <TableRow
             android:layout_width="293dp"
             android:padding="5dp"
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtFrom"
+            <TextView
+                android:id="@+id/txtvFrom"
                 android:layout_width="282dp"
                 android:hint="From"
                 android:drawablePadding="10dp"
@@ -161,8 +162,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtTo"
+            <TextView
+                android:id="@+id/txtvTo"
                 android:layout_width="282dp"
                 android:hint="To"
                 android:drawablePadding="10dp"
@@ -177,8 +178,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtContent"
+            <TextView
+                android:id="@+id/txtvContent"
                 android:layout_width="282dp"
                 android:hint="Content"
                 android:drawablePadding="10dp"
@@ -193,13 +194,13 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtDeclaredAmount"
+            <TextView
+                android:id="@+id/txtvDeclaredAmount"
                 android:layout_width="282dp"
-                android:hint="DeclaredAmount"
                 android:drawablePadding="10dp"
                 android:ems="10"
-                android:inputType="text"
+                android:hint="DeclaredAmount"
+                android:inputType="number|text"
                 android:paddingStart="10dp"
                 android:textSize="14sp" />
         </TableRow>
@@ -209,8 +210,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtFee"
+            <TextView
+                android:id="@+id/txtvFee"
                 android:layout_width="282dp"
                 android:hint="Fee"
                 android:drawablePadding="10dp"
@@ -225,8 +226,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtPayWhenRecived"
+            <TextView
+                android:id="@+id/txtvPayWhenRecived"
                 android:layout_width="282dp"
                 android:hint="PayWhenRecived"
                 android:drawablePadding="10dp"
@@ -241,8 +242,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtPaymentStatus"
+            <TextView
+                android:id="@+id/txtvPaymentStatus"
                 android:layout_width="282dp"
                 android:hint="PaymentStatus"
                 android:drawablePadding="10dp"
@@ -257,8 +258,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtInvoiceValue"
+            <TextView
+                android:id="@+id/txtvInvoiceValue"
                 android:layout_width="282dp"
                 android:hint="InvoiceValue"
                 android:drawablePadding="10dp"
@@ -273,8 +274,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtShipmentStatus"
+            <TextView
+                android:id="@+id/txtvShipmentStatus"
                 android:layout_width="282dp"
                 android:hint="ShipmentStatus"
                 android:drawablePadding="10dp"
@@ -289,8 +290,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtBusXKey"
+            <TextView
+                android:id="@+id/txtvBusXKey"
                 android:layout_width="282dp"
                 android:hint="BusKey"
                 android:drawablePadding="10dp"
@@ -305,8 +306,8 @@
             android:shrinkColumns="*"
             android:stretchColumns="*">
 
-            <EditText
-                android:id="@+id/etxtDriverXKey"
+            <TextView
+                android:id="@+id/txtvDriverXKey"
                 android:layout_width="282dp"
                 android:hint="DriverXKey"
                 android:drawablePadding="10dp"
