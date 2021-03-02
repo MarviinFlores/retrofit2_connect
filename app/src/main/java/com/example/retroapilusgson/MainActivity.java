@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         //ShipmentInfoGet();
     }
 
-
+    // llamado de  la interface q devuelve el metodo GET Retrofit
     private void getInfoShipment() {
                  // Registro del LocalDateTime Converter
                  Gson gson = new GsonBuilder()
@@ -78,10 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 .registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
                 @Override
                 public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-                    return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                    return LocalDateTime.parse(json.getAsString());
+                    //return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("yyyy::MM::dd HH::mm::ss"));
                 }
             }).create();
-            // creacion de Instacia RETROFIT
+             // creacion de Instacia RETROFIT
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("https://api.busterminal.octword.net")  // OCTWORD AP
                     .addConverterFactory(GsonConverterFactory.create(gson))         //    GSON CONVERRTER
@@ -94,10 +95,11 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Shipment> call, Response<Shipment> response) {
                     if (!response.isSuccessful()) {
+                        // mesaje de Error
                         mJsoTxtView.setText("Codigo:   " + response.code());
                         return;
                     }
-                    // <Shipment>  infoTrack = response.body(); // respuesta del servidor
+                    //  response del  servidor0
 
                     String content = "";
 
